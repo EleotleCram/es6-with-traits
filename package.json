@@ -1,0 +1,34 @@
+{
+  "name": "es6-with-traits",
+  "version": "0.0.1",
+  "description": "A traits mechanism for ES6 with support for \"methodical interface checking\"",
+  "main": "src/es6-with-traits.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --compilers js:babel/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EleotleCram/es6-with-traits.git"
+  },
+  "keywords": [
+    "es6",
+    "traits",
+    "methodical",
+    "interface"
+  ],
+  "author": "Marcel Toele",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EleotleCram/es6-with-traits/issues"
+  },
+  "homepage": "https://github.com/EleotleCram/es6-with-traits#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "sinon": "^1.17.2"
+  }
+}
