@@ -24,7 +24,7 @@ if (require.main === module) {
 				this.wings = ["left wing", "right wing"];
 			}
 			fly() {
-				console.log("flap flap with the " + this.wings.join("and"));
+				console.log("flap flap with the " + this.wings.join(" and "));
 			}
 		};
 	});
@@ -32,7 +32,7 @@ if (require.main === module) {
 		return class Walking extends parentClass {
 			constructor(...args) {
 				super(...args);
-				this.legs = []; // there must be legs, we don't know how many
+				this.legs = this.legs || []; // there must be legs, by default we don't know how many
 
 				// Also to be researched (as an alternative to the above):
 				// Legged.check(this);
@@ -59,13 +59,15 @@ if (require.main === module) {
 		};
 	});
 
-	// @TODO why does it work for Walking, Biped, but not for Biped, Walking ?
 	class Dog extends withTraits(Animal, Quadruped, Walking) {}
-	class Bird extends withTraits(Animal, Walking, Biped, Flying) {}
+	class Bird extends withTraits(Animal, Biped, Walking, Flying) {}
 
 	let dog = new Dog();
+	console.log("dog.walk():");
 	dog.walk();
 	let bird = new Bird();
+	console.log("bird.walk():");
 	bird.walk();
+	console.log("bird.fly():");
 	bird.fly();
 }
