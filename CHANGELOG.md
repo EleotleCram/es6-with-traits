@@ -1,5 +1,7 @@
 ## development version
 
+## 0.0.5 (2015-01-04)
+
 features:
 
   - Added semantic error messages in case of failing check()
