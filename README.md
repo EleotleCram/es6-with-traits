@@ -66,6 +66,7 @@ A traits mechanism for ES6 with support for "methodical interface checking"
     var duck = {
         legs: [],
         walk: function() {},
+        wings: [],
         fly: function() {}
     };
 
