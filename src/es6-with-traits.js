@@ -11,12 +11,20 @@ const Trait = function(traitFunc) {
 	return traitFunc;
 };
 const withTraits = function(baseClassOrFirstTrait, ...traits) {
-	var baseClass = baseClassOrFirstTrait.__trait__ ? baseClassOrFirstTrait(Base) : baseClassOrFirstTrait;
-	return traits.reduce((parentClass, trait) => trait(parentClass), baseClass);
+	let baseClass = baseClassOrFirstTrait.__trait__ ? baseClassOrFirstTrait(Base) : baseClassOrFirstTrait;
+	var iface;
+	let intermediateClass = class Intermediate extends baseClass {
+		static check(...args) {
+			return iface.check(...args);
+		}
+	};
+	let mixinClass = traits.reduce((parentClass, trait) => trait(parentClass), intermediateClass);
+	iface = getInterface(mixinClass);
+	return mixinClass;
 }
 
-const getInterface = function(trait) {
-	var aClass = trait(Base);
+const getInterface = function(traitOrClass) {
+	var aClass = traitOrClass.__trait__ ? traitOrClass(Base) : traitOrClass;
 	var instance = new aClass();
 	var prototype = Object.getPrototypeOf(instance);
 	var propertyNames = Object.keys(instance)
