@@ -117,4 +117,12 @@ if (require.main === module) {
 
 	console.log("Does a dog walk?", Walking.check(dog)); // => true
 	console.log("Does a dog fly?", Flying.check(dog)); // => false
+
+	var duck = {
+		legs: [],
+		walk: function() {},
+		fly: function() {}
+	};
+
+	console.log("Is a duck a bird?", Bird.check(duck)); // => true
 }
