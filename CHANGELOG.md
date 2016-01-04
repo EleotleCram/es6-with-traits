@@ -1,5 +1,9 @@
 ## development version
 
+features:
+
+  - Added #check() as a static/class method to the class constructed by withTraits()
+
 deprecations:
 
   - mimics(), please use the already available checks() (to promote the API of
