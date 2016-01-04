@@ -125,4 +125,8 @@ if (require.main === module) {
 	};
 
 	console.log("Is a duck a bird?", Bird.check(duck)); // => true
+
+	// Of course, not everything is perfect (yet):
+	console.log("Is a bird a Quadruped?", Quadruped.check(bird)); // => true
+	console.log("Is a dog a Biped?", Biped.check(dog)); // => true
 }
