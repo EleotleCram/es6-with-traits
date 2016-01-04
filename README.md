@@ -3,6 +3,8 @@ A traits mechanism for ES6 with support for "methodical interface checking"
 
 ## Usage
 
+    let {Trait, withTraits} = require('es6-with-traits');
+
     class Animal {}
     let Flying = Trait(function(parentClass) {
         return class Flying extends parentClass {
@@ -58,5 +60,17 @@ A traits mechanism for ES6 with support for "methodical interface checking"
     console.log("bird.fly():");
     bird.fly();
 
-    console.log("Does a dog walk?", Walking.mimics(dog)); // => true
-    console.log("Does a dog fly?", Flying.mimics(dog)); // => false
+    console.log("Does a dog walk?", Walking.check(dog)); // => true
+    console.log("Does a dog fly?", Flying.check(dog)); // => false
+
+    var duck = {
+        legs: [],
+        walk: function() {},
+        fly: function() {}
+    };
+
+    console.log("Is a duck a bird?", Bird.check(duck)); // => true
+
+    // Of course, not everything is perfect (yet):
+    console.log("Is a bird a Quadruped?", Quadruped.check(bird)); // => true
+    console.log("Is a dog a Biped?", Biped.check(dog)); // => true
