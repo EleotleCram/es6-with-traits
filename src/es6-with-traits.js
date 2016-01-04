@@ -43,7 +43,18 @@ const getInterface = function(traitOrClass) {
 
 	// Check if object mimics this interface (has all the properties required by the interface)
 	var check = function(object) {
-		return propertiesRequiredByInterface.every((p) => typeString(object[p.name]) === p.type);
+		return propertiesRequiredByInterface.every(function(p) {
+			let actualType = typeString(object[p.name]);
+			let isOk = actualType === p.type;
+
+			if(!object[p.name]) {
+				console.warn(`Required property '${p.name}' missing!`);
+			} else if(!isOk) {
+				console.warn(`Required property '${p.name}' has wrong type: ${actualType} !== ${p.type} (expected)!`);
+			}
+
+			return isOk;
+		});
 	};
 
 	return {
