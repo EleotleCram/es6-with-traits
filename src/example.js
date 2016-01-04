@@ -64,6 +64,7 @@ console.log("Does a dog fly?", Flying.check(dog)); // => false
 var duck = {
 	legs: [],
 	walk: function() {},
+	wings: [],
 	fly: function() {}
 };
 
