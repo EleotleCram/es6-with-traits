@@ -2,7 +2,11 @@ class Base {}
 const Trait = function(traitFunc) {
 	traitFunc.__trait__ = true;
 	let iface = getInterface(traitFunc);
-	traitFunc.mimics = traitFunc.check = iface.mimics;
+	traitFunc.check = iface.check;
+	traitFunc.mimics = function(...args) {
+		console.warn("The method 'mimics' is deprecated, please use 'check' instead");
+		return this.check(...args);
+	}
 
 	return traitFunc;
 };
@@ -30,13 +34,12 @@ const getInterface = function(trait) {
 	}
 
 	// Check if object mimics this interface (has all the properties required by the interface)
-	var mimics = function(object) {
+	var check = function(object) {
 		return propertiesRequiredByInterface.every((p) => typeString(object[p.name]) === p.type);
-	}
+	};
 
 	return {
-		mimics,
-		check: mimics, // compatibility with methodical
+		check,
 	};
 }
 
@@ -104,6 +107,6 @@ if (require.main === module) {
 	console.log("bird.fly():");
 	bird.fly();
 
-	console.log("Does a dog walk?", Walking.mimics(dog)); // => true
-	console.log("Does a dog fly?", Flying.mimics(dog)); // => false
+	console.log("Does a dog walk?", Walking.check(dog)); // => true
+	console.log("Does a dog fly?", Flying.check(dog)); // => false
 }
