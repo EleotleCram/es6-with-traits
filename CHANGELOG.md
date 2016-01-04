@@ -1,6 +1,12 @@
 ## development version
 
-  - . . .
+features:
+
+  - Added semantic error messages in case of failing check()
+
+bugfixes:
+
+  - Fixed duck type example 
 
 ## 0.0.4 (2016-01-04)
 
