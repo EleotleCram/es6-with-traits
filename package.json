@@ -1,6 +1,6 @@
 {
   "name": "es6-with-traits",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A traits mechanism for ES6 with support for \"methodical interface checking\"",
   "main": "src/es6-with-traits.js",
   "directories": {

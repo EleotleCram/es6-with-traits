@@ -1,5 +1,9 @@
 ## development version
 
+  - . . .
+
+## 0.0.4 (2016-01-04)
+
 features:
 
   - Added #check() as a static/class method to the class constructed by withTraits()
